@@ -1,0 +1,4 @@
+@mixin hoverItem($color: white) {
+  color: $color;
+  transition-duration: 8ms;
+}
