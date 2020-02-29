@@ -1,8 +1,12 @@
 import InfoInConsole from './InfoInConsole';
-import ApiServiceFretch from './ApiServiceFretch';
+import IndexedDB from './IndexedDB';
+import getDateTimeFromTimestamp from './getDateTimeFromTimestamp';
+import cutPreview from './cutPreview';
 
 
 export {
+    IndexedDB,
     InfoInConsole,
-    ApiServiceFretch
+    getDateTimeFromTimestamp,
+    cutPreview
 }

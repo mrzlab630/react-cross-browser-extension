@@ -20,6 +20,7 @@ const App = () =>{
 
     const state = store && store.getState() || false;
 
+
     const {error,isLoading} = state || false;
 
     if(error){

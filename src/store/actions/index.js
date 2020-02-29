@@ -1,6 +1,8 @@
-import getPagesFromAPI from './getPagesFromAPI';
+import actionsNotesFromDB from './actionsNotesFromDB';
+import putStatus from './putStatus';
 
 export {
-    getPagesFromAPI
+    putStatus,
+    actionsNotesFromDB
 
 }

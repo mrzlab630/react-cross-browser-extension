@@ -1,9 +1,9 @@
 const initialState = {
     user:false,
+    notes:[],
     app:false,
-    error:false,
-    isLoading:true,
-    isLoadingPage:true,
+    status:false,
+    isLoading:false,
 
 };
 

@@ -13,13 +13,31 @@ const theme = createMuiTheme({
             main: '#19857b',
         },
         error: {
-            main: '#b30001',
+            main: '#f44336',
+        },
+        warning:{
+            main: '#ff9800',
+        },
+        info:{
+            main: '#2b3e50',
+        },
+        success:{
+            main: '#4caf50',
         },
         color: {
             default: '#d4d4d4',
+            main:'#ffffff'
         },
+
     },
 
+    pre:{
+        background:`#eeeeee`,
+        padding: 20,
+        width: `95%`,
+        margin: `auto`,
+        whiteSpace: `pre-wrap`,
+    },
     line:{
         width:`45%`,
         height:5,

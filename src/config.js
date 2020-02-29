@@ -7,9 +7,7 @@
  * About:
  *
  */
-
-
-import imageSvg from '../src/assets/svgs/camera-retro.svg';
+import React from "react";
 
 import alignCenterSvg from '../src/assets/svgs/align-center.svg';
 import alignJustifySvg from '../src/assets/svgs/align-justify.svg';
@@ -18,7 +16,6 @@ import alignRightSvg from '../src/assets/svgs/align-right.svg';
 
 import underlineSvg from '../src/assets/svgs/underline.svg';
 import italicSvg from '../src/assets/svgs/italic.svg';
-import linkSvg from '../src/assets/svgs/link.svg';
 import listOlSvg from '../src/assets/svgs/list-ol.svg';
 import listUlSvg from  '../src/assets/svgs/list-ul.svg';
 import boldSvg from '../src/assets/svgs/bold.svg';
@@ -29,9 +26,15 @@ import horizontalRuleSvg from '../src/assets/svgs/horizontal-rule.svg';
 import textSizeSvg from '../src/assets/svgs/text-size.svg';
 import fontColorSvg from '../src/assets/svgs/font-color.svg';
 import fontSvg from '../src/assets/svgs/font.svg';
+import DeleteIco from "./assets/svgs/trash-alt.inline.svg";
 
 
-const apiUrl = 'https://localhost:4000';
+
+const DB = {
+                nameDb:'mrZLab630DBnotes',
+                ver:2,
+                storeName:'notes'
+            };
 
 const colorsList = ['#e06ec8','#26e014','#b30001','#ffeb1c','#ffffff','#000000','#0e0ee0','#81878e','#2b3e50'];
 const fontList = ['Arial','Tahoma','Verdana'];
@@ -44,77 +47,75 @@ const fontSizeList = [
                         {action:6,name:'xx-large',px:33},
                         {action:7,name:'xxx-large',px:44}
                         ];
-
-
 const   textEditor = {
     actionButtons:[
         {
             id:`align left`,
             ico:alignLeftSvg,
-            name:'слева',
+            name:'left',
             command:'justifyLeft',
             size:17
         },
         {
             id:`align justify`,
             ico:alignJustifySvg,
-            name:'выравнивание',
+            name:'justify',
             command:'justifyFull',
             size:17
         },
         {
             id:`align right`,
             ico:alignRightSvg,
-            name:'справа',
+            name:'right',
             command:'justifyRight',
             size:17
         },
         {
             id:`align center`,
             ico:alignCenterSvg,
-            name:'по центру',
+            name:'center',
             command:'justifyCenter',
             size:17
         },
         {
             id:`underline`,
             ico:underlineSvg,
-            name:'подчеркнуть',
+            name:'underline',
             command:'underline',
             size:15
         },
         {
             id:`italic`,
             ico:italicSvg,
-            name:'наклон',
+            name:'italic',
             command:'italic',
             size:10
         },
         {
             id:`list numeric`,
             ico:listOlSvg,
-            name:'номерной список',
+            name:'list numeric',
             command:'insertOrderedList',
             size:17
         },
         {
             id:`list dotted`,
             ico:listUlSvg,
-            name:'точечный список',
+            name:'list dotted',
             command:'insertUnorderedList',
             size:17
         },
         {
             id:`bold`,
             ico:boldSvg,
-            name:'жирный',
+            name:'bold',
             command:'bold',
             size:15
         },
         {
             id:`font`,
             ico:fontSvg,
-            name:'размер шрифта',
+            name:'font',
             command:'fontName',
             list:{font:fontList},
             size:17
@@ -122,7 +123,7 @@ const   textEditor = {
         {
             id:`font size`,
             ico:textSizeSvg,
-            name:'шрифт',
+            name:'font size',
             command:'fontSize',
             list:{fontSize:fontSizeList},
             size:17
@@ -130,7 +131,7 @@ const   textEditor = {
         {
             id:`highlighter`,
             ico:highlighterSvg,
-            name:'выделить',
+            name:'high lighter',
             command:'hiliteColor',
             list:{colors:colorsList},
             size:17
@@ -138,7 +139,7 @@ const   textEditor = {
         {
             id:`font color`,
             ico:fontColorSvg,
-            name:'цвет текста',
+            name:'font color',
             command:'foreColor',
             list:{colors:colorsList},
             size:17
@@ -146,7 +147,7 @@ const   textEditor = {
         {
             id:`back color`,
             ico:fillDripSvg,
-            name:'цвет фона',
+            name:'back color',
             command:'backColor',
             list:{colors:colorsList},
             size:17
@@ -154,37 +155,34 @@ const   textEditor = {
         {
             id:`horizontal line`,
             ico:horizontalRuleSvg,
-            name:'горизонтальная линия',
+            name:'horizontal line',
             command:'insertHorizontalRule',
             size:17
         },
         {
             id:`code`,
             ico:codeSvg,
-            name:'код',
+            name:'code',
             command:'formatBlock',
             tag:'pre',
             size:17
         },
     ],
-    settingBtm:[
-        {
-            id:`media`,
-            ico:imageSvg,
-            name:'медиа',
-            size:20
-        },
-    ],
+    settingBtm:[],
     settingBtmList:[{
-        id:'send',
-        name:'отправить'
+        id:'add',
+        name:'save'
     }]
 };
+const menuAction = [
+                        {name:`delete`,ico:<DeleteIco width={20}/>}
+                    ];
 
 export  {
-            apiUrl,
+            DB,
             colorsList,
             fontList,
             fontSizeList,
-            textEditor
+            textEditor,
+            menuAction
             };

@@ -16,17 +16,19 @@ import {
    } from '@material-ui/core';
 
 import ButtonRender from './ButtonRender';
+import MenuItm from '../MenuItm';
 
 import {useTheme} from "@material-ui/styles";
 import useStyles from "./useStyles";
-import smileSvg from '../../assets/svgs/smile.svg';
+import SmileSvg from '../../assets/svgs/smile.inline.svg';
 
+import emojis from '../../assets/emojis';
 import {textEditor} from '../../config';
 
 
 
 
-const TextEditor = ({callback,value='',info,placeholder='Напишите что-нибудь...', ...res}) => {
+const TextEditor = ({callback,value='',info,placeholder='Write something...', ...res}) => {
 
 
     const [text]                        = useState(value);
@@ -48,45 +50,60 @@ const TextEditor = ({callback,value='',info,placeholder='Напишите что
 
     };
 
-
     const handleClickAction = id => e =>{
 
-        const {id:action,command,color,size,font,tag} = e || false;
+        let {id:action,command,color,size,font,tag} = e || false;
         let val;
 
+        switch (id) {
 
-
-
-        switch (action || 'none') {
-
-            case 'send':
-             return    callback({id,action,value:textToSend});
-
-            case 'font size':
-                val = size;
+            case 'smile':
+                val = e;
+                command = 'insertHTML';
                 break;
-
-
-            case 'font':
-                val = font;
-                break;
-
-            case 'back color':
-            case 'highlighter':
-            case 'font color':
-                val = color;
-                break;
-
-
-            case 'code':
-                val = tag;
-                break;
-
 
             default:
-                val = false;
-                break;
+
+                switch ( action || 'none') {
+
+                    case 'add':
+                        return    callback({id,
+                            action,
+                            value:textToSend,
+                            count:textCount
+                        });
+
+
+
+                    case 'font size':
+                        val = size;
+                        break;
+
+
+                    case 'font':
+                        val = font;
+                        break;
+
+                    case 'back color':
+                    case 'highlighter':
+                    case 'font color':
+                        val = color;
+                        break;
+
+
+                    case 'code':
+                        val = tag;
+                        break;
+
+
+                    default:
+                        val = false;
+                        break;
+                }
         }
+
+
+
 
         if(command){
             document.execCommand("styleWithCSS", true, null);
@@ -97,6 +114,15 @@ const TextEditor = ({callback,value='',info,placeholder='Напишите что
 
     };
 
+    const emojisList = emojis && Array.isArray(emojis) ? emojis.map(itm => {
+
+        const {emoji} = itm || false;
+
+        return({
+                    name:emoji,
+                    ico:emoji,
+                })
+    }) : false;
 
 
     const theme = useTheme();
@@ -109,12 +135,11 @@ const TextEditor = ({callback,value='',info,placeholder='Напишите что
              {textCount}
             </Box>
             <Box className={classes.buttonsListSetting} >
-                <IconButton
-                    aria-label="delete"
-                    className={classes.smileBtm}
-                    onClick={handleClickAction(`smile`)}>
-                    <img src={smileSvg} width={20} height={`auto`} alt={`pic`}/>
-                </IconButton>
+                <MenuItm
+                    icon={<SmileSvg width={20}/>}
+                    items={emojisList}
+                    callback={handleClickAction(`smile`)}
+                />
             </Box>
         </Box>
 
@@ -123,7 +148,7 @@ const TextEditor = ({callback,value='',info,placeholder='Напишите что
                    className={classes.textarea}
                    onInput={textEditorAction}
                    onBlur={textEditorAction}
-                   dangerouslySetInnerHTML={{__html: text}}
+                   dangerouslySetInnerHTML={{__html: text|| placeholder}}
                    {...{placeholder}}
                />
 

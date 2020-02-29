@@ -22,11 +22,14 @@ const useStyles = makeStyles(theme => ({
         outline: `none`,
         overflow:`hidden`,
         resize: `none`,
+
     },
     smileBtm:{
         float: `right`,
+        /*
         width: 45,
         height: 45,
+         */
     },
     line:{
         ...theme.line

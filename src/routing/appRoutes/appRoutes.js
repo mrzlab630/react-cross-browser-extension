@@ -12,6 +12,12 @@ const appRoutes = {
         exact: true,
         private:false,
     },
+    index:{
+        path:'/index.html',
+        component:Home,
+        exact: true,
+        private:false,
+    },
     error:{
         path:'/Error404',
         component:ErrorPage,
