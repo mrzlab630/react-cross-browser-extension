@@ -156,7 +156,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.8.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.7.2",
     "react-svg-loader": "^3.0.3",
     "svg-url-loader": "^4.0.0"
